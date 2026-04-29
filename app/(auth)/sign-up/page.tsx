@@ -79,7 +79,7 @@ const SignUp = () => {
                 <CountrySelectField
                     name="country"
                     label="Country"
-                    control={control}
+                    control={control as any}
                     error={errors.country}
                     required
                 />
