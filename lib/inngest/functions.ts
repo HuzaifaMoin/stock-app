@@ -85,7 +85,7 @@ export const sendSignUpEmail = inngest.createFunction(
 
 export const sendDailyNewsSummary =
   inngest.createFunction(
-    { id: "daily-news-summary", cron: "0 12 * * *" }as any,
+    { id: "daily-news-summary", event: 'app/send.daily.news', cron: "0 12 * * *" } as any,
     async ({ step }: any) => {
       const users = await step.run(
         "get-all-users",
@@ -206,7 +206,7 @@ export const sendDailyNewsSummary =
 
           const newsContent =
             (part &&
-            "text" in part
+              "text" in part
               ? part.text
               : null) ||
             "No market news.";
