@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import {auth} from "@/lib/better-auth/auth";
+import { getAuth } from "@/lib/better-auth/auth";
+const auth = await getAuth();
+
 import {headers} from "next/headers";
 import {redirect} from "next/navigation";
 

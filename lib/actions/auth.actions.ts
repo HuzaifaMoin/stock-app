@@ -1,6 +1,8 @@
 'use server';
 
-import {auth} from "@/lib/better-auth/auth";
+import { getAuth } from "@/lib/better-auth/auth";
+const auth = await getAuth(); 
+
 import {inngest} from "@/lib/inngest/client";
 import {headers} from "next/headers";
 
