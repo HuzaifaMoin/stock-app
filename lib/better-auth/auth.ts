@@ -7,13 +7,12 @@ import { nextCookies} from "better-auth/next-js";
 let authInstance: ReturnType<typeof betterAuth<any>> | null = null;
 
 export const getAuth = async () => {
-    if (authInstance) {
-        return authInstance;
+   if(authInstance) return authInstance;
 
-    }
-
-    const db = await connectToDatabase();
-    if (!db) throw new Error('MongoDB connection not found');
+    const mongoose = await connectToDatabase();
+    const db = mongoose.connection.db;
+    
+    if(!db) throw new Error('MongoDB connection not found');
 
     authInstance = betterAuth({
         database: mongodbAdapter(db as any),
