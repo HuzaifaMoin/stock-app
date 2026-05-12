@@ -7,8 +7,15 @@ import {redirect} from "next/navigation";
 export const dynamic = 'force-dynamic';
 
 const Layout = async ({ children }: { children : React.ReactNode }) => {
-    const auth = await getAuth();
-    const session = await auth.api.getSession({ headers: await headers() })
+    // Try to get session, but handle build-time gracefully
+    let session = null;
+    try {
+        const auth = await getAuth();
+        session = await auth.api.getSession({ headers: await headers() })
+    } catch (error) {
+        // During build time or when database is unavailable, session will be null
+        console.log('Auth check skipped during build or database unavailable');
+    }
 
     if(session?.user) redirect('/')
 

@@ -35,20 +35,20 @@ export const connectToDatabase = async () => {
 
     try {
         cached.conn = await cached.promise;
-        console.log(`✅ Connected to MongoDB (${process.env.NODE_ENV})`);
+        console.log(`Connected to MongoDB (${process.env.NODE_ENV})`);
     } catch (err) {
         cached.promise = null;
-        console.error('❌ MongoDB Connection Error:', err);
+        console.error('MongoDB Connection Error:', err);
 
         // For development, provide helpful error messages
         if (process.env.NODE_ENV === 'development') {
             if (err instanceof Error) {
                 if (err.message.includes('querySrv')) {
-                    console.error('💡 MongoDB Atlas cluster may be paused. Go to https://cloud.mongodb.com and resume your cluster.');
+                    console.warn('💡 MongoDB Atlas cluster may be paused. Go to https://cloud.mongodb.com and resume your cluster.');
                 } else if (err.message.includes('ECONNREFUSED')) {
-                    console.error('💡 Local MongoDB not running. Install MongoDB or use Atlas.');
+                    console.warn('💡 Local MongoDB not running. Install MongoDB or use Atlas.');
                 } else if (err.message.includes('authentication')) {
-                    console.error('💡 Check your MongoDB credentials in .env file.');
+                    console.warn('💡 Check your MongoDB credentials in .env file.');
                 }
             }
         }

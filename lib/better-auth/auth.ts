@@ -31,7 +31,7 @@ export const getAuth = async (): Promise<ReturnType<typeof betterAuth<any>>> => 
 
         return authInstance;
     } catch (error) {
-        console.error(' Failed to initialize auth with MongoDB:', error);
+        console.warn(' Failed to initialize auth with MongoDB:', error);
 
         // For development, create a minimal auth instance without database
         if (process.env.NODE_ENV === 'development') {
