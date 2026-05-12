@@ -1,5 +1,7 @@
 import Header from "@/components/Header"
 
+export const dynamic = 'force-dynamic';
+
 const layout = ({ children }: { children: React.ReactNode } ) => {
     return (
         <main className="min-h-screen text-gray-400">

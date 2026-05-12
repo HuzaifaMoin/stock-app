@@ -89,7 +89,7 @@ const SignUp = () => {
                     label="Investment Goals"
                     placeholder="Select your investment goal"
                     options={INVESTMENT_GOALS}
-                    control={control}
+                    control={control }
                     error={errors.investmentGoals}
                     required
                 />
