@@ -1,3 +1,8 @@
+import dns from "dns";
+
+// Set DNS servers to improve connection reliability
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
+
 import nodemailer from 'nodemailer';
 import {WELCOME_EMAIL_TEMPLATE, NEWS_SUMMARY_EMAIL_TEMPLATE} from "@/lib/nodemailer/templates";
 

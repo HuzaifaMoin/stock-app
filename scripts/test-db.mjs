@@ -1,4 +1,9 @@
 import 'dotenv/config';
+import dns from "dns";
+
+// Set DNS servers to improve connection reliability
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
+
 import mongoose from 'mongoose';
 
 async function main() {

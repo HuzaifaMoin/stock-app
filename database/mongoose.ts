@@ -1,4 +1,8 @@
 import mongoose from "mongoose";
+import dns from "dns";
+
+// Set DNS servers to improve connection reliability
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/stock-app";
 
